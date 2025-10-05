@@ -21,7 +21,6 @@ font-size:14px;
 font-weight:600 ;
 font-family:inherit ; 
 
-
 ` ;
 
 const NavBar = ()=>{
