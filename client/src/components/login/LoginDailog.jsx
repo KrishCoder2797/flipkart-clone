@@ -137,6 +137,8 @@ const [signup,setSignup] = useState(signupInitial) ;
 
   const signUpUser = async()=>{
      let response = await authenticateSignup(signup);
+     if(!response) return ;
+     handleClose();
   }
 
   return (
