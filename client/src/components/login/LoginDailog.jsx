@@ -1,11 +1,12 @@
 
 import {Dialog,Box,TextField,Typography,Button,styled} from '@mui/material';
-import { useState } from 'react';
+import { useState , useContext } from 'react';
+import { toast } from "react-toastify";
 
 // UserDefined Import 
 
-import { authenticateSignup } from '../../service/api';
-
+import { authenticateSignup,authenticateLogin } from '../../service/api';
+import { DataContext } from '../../context/DataProvider';
 
 // Custom CSS
 
@@ -110,6 +111,12 @@ const signupInitial = {
   phone :''
 }
 
+const loginInitialValues = {
+
+  username :'',
+  password :''
+}
+
 const LoginDailog = ({open,setOpen})=> {
 // Creating State for Toggling Login and Register
   const [account,toggleAccount] = useState(accountInitialValue.login) ;
@@ -117,7 +124,11 @@ const LoginDailog = ({open,setOpen})=> {
   
 // Creating state to Store Input Field from Registration
 const [signup,setSignup] = useState(signupInitial) ;
+const [login,setLogin] = useState(loginInitialValues) ;
 
+
+// Extracting value data Context 
+const {setAccount} =useContext(DataContext);
 
 // Toggling the Login Page if we are Click anywhere else Login window should disappear 
   const handleClose =()=>{
@@ -139,7 +150,25 @@ const [signup,setSignup] = useState(signupInitial) ;
      let response = await authenticateSignup(signup);
      if(!response) return ;
      handleClose();
+     setAccount(signup.firstname);
   }
+
+ const onValueChange = (e)=>{
+    setLogin({...login, [e.target.name]:e.target.value})
+ } 
+
+ const loginUser = async()=>{
+  let response =  await authenticateLogin(login);
+   console.log(response); 
+   if(response.status === 200){
+    handleClose();
+    setAccount(response.data.data.firstname);
+    toast.success("Login Successful");
+   }else{
+      
+      toast.error("Please enter valid username or password");
+   }
+ }
 
   return (
     <Dialog open ={open} onClose={handleClose} PaperProps={{
@@ -158,10 +187,10 @@ const [signup,setSignup] = useState(signupInitial) ;
               </Image>
               { account.view === 'login' ? 
                     <Wrapper>
-                          <TextField  variant='standard' label="Enter Email/Mobile Number"/>
-                          <TextField  variant='standard' label="Enter Password"/>
+                          <TextField  variant='standard' onChange={(e)=>onValueChange(e)} name= 'username' label="Enter User Name"/>
+                          <TextField  variant='standard' onChange={(e)=>onValueChange(e)} name= 'password' label="Enter Password"/>
                           <Text>By continuing, you agree to Flipkart's Term of Use and Privacy Policy</Text>
-                          <LoginButton>Login</LoginButton>
+                          <LoginButton onClick={()=> loginUser()}>Login</LoginButton>
                           <Typography style={{textAlign:'center'}}>OR</Typography>
                           <RequestOTP>Request OTP</RequestOTP>
                           <CreateAccount onClick={()=> toggleSignUp()}>New to Flipkart ? Create an account ? </CreateAccount>
