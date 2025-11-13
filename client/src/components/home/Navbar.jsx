@@ -34,18 +34,24 @@ font-family:inherit ;
 
 const NavBar = ()=>{
 
+    
+
     return (
 
-       <Component>
-        {
-            navData.map(data=>(
-                <Container>
-                    <img src={data.url} alt="nav" style={{width:64}}/>
-                    <Text>{data.text}</Text>
-                </Container>
-            ))
-        }
-       </Component>
+        <Box style={{backgroundColor:'#fff' ,}}>
+        
+            <Component>
+                {
+                    navData.map(data=>(
+                        <Container>
+                            <img src={data.url} alt="nav" style={{width:64}}/>
+                            <Text>{data.text}</Text>
+                        </Container>
+                    ))
+                }
+            </Component>
+
+        </Box>
     )
 }
 
