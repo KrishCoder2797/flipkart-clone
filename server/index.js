@@ -4,10 +4,13 @@ import dotenv from 'dotenv' ;
 import cors from 'cors' ; 
 import {v4 as uuid} from 'uuid' ;
 
+
+
 // Custom imports
 import Connection from './database/db.js' ;
 import DefaultData from './default.js';
 import Router from './routes/routes.js' ;
+import razorpayRoutes from "./routes/razorpay-route.js";
 
 const app = express() ;
 
@@ -16,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:false })) ;
 app.use('/',Router);
+app.use("/payment", razorpayRoutes);
 const PORT = 4000 ; 
 
 const USERNAME = process.env.DB_USERNAME ;

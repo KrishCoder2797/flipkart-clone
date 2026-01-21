@@ -22,12 +22,21 @@ export const authenticateLogin = async (data)=>{
 }
 
 
-export const payUsingPaytm = async (data) =>{
 
-    try{
-       let response = await axios.post(`${URL}/payment`,data) ; 
-        return response.data ;
-    }catch(error){
-        console.log("Error while calling payment api" , error);
-    }
-}
+export const createRazorpayOrder = async (amount) => {
+  const res = await fetch("http://localhost:4000/payment/create-order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ amount }),
+  });
+  return res.json();
+};
+
+export const verifyRazorpayPayment = async (data) => {
+  const res = await fetch("http://localhost:4000/payment/verify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+};
