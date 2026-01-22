@@ -189,11 +189,11 @@ const {setAccount} =useContext(DataContext);
                     <Wrapper>
                           <TextField  variant='standard' onChange={(e)=>onValueChange(e)} name= 'username' label="Enter User Name"/>
                           <TextField  variant='standard' onChange={(e)=>onValueChange(e)} name= 'password' label="Enter Password"/>
-                          <Text>By continuing, you agree to Flipkart's Term of Use and Privacy Policy</Text>
+                          <Text>By continuing, you agree to ShopEase's Term of Use and Privacy Policy</Text>
                           <LoginButton onClick={()=> loginUser()}>Login</LoginButton>
                           <Typography style={{textAlign:'center'}}>OR</Typography>
                           <RequestOTP>Request OTP</RequestOTP>
-                          <CreateAccount onClick={()=> toggleSignUp()}>New to Flipkart ? Create an account ? </CreateAccount>
+                          <CreateAccount onClick={()=> toggleSignUp()}>New to ShopEase ? Create an account ? </CreateAccount>
                     </Wrapper>
 
                     :

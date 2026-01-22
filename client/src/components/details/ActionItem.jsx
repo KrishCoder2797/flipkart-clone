@@ -80,10 +80,10 @@ const ActionItem = ({ product }) => {
 
       
       const options = {
-        key: "rzp_test_xxxxx", 
+        key: process.env.REACT_APP_RAZORPAY_ID_KEY, 
         amount: order.amount,
         currency: "INR",
-        name: "Flipkart Clone",
+        name: "ShopEase",
         description: "Product Purchase",
         order_id: order.id,
 

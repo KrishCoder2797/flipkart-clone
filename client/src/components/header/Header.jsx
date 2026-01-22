@@ -55,7 +55,9 @@ const MenuButton = styled(IconButton)(({theme}) =>({
 }))
 
 const Header = ()=>{
-    const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
+   // const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
+    const logoURL = 'https://firebasestorage.googleapis.com/v0/b/sppunote.firebasestorage.app/o/klogo.png?alt=media&token=b9fbf383-c82d-47cd-8b2b-20256f5da0e5' ;
+
     const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
 
 

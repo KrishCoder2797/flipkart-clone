@@ -200,7 +200,7 @@ const ProductDetail = ({ product }) => {
         </Typography>
         <Typography>
           <StyledBadge />
-          Sign up for Flipkart Pay Later and get Flipkart Gift card worth ₹100+
+          Sign up for ShopEase Pay Later and get ShopEase Gift card worth ₹100+
           Know More
         </Typography>
         <Typography>
@@ -209,7 +209,7 @@ const ProductDetail = ({ product }) => {
         </Typography>
         <Typography>
           <StyledBadge />
-          5% Cashback on Flipkart Axis Bank Card
+          5% Cashback on ShopEase Axis Bank Card
         </Typography>
         <Typography>
           <StyledBadge />
